@@ -1,0 +1,58 @@
+<div class="seller-page">
+  <div class="left-navi">
+    <h4>Products</h4>
+    <ul>
+      <li class="product" *ngFor="let product of sellerProductList">
+        <button (click)="showProductDetail(product)">{{ product.name }}</button>
+      </li>
+    </ul>
+  </div>
+  <div class="main">
+    <div class="welcome" *ngIf="!currentProduct">
+      <h4>Welcome!</h4>
+      <p>Click on the product to see details.</p>
+    </div>
+    <div class="product" *ngIf="currentProduct">
+      <div class="product-details">
+        <h4>Product Details</h4>
+        <div>
+          <label for="name">Name:</label>
+          <span id="name">{{ currentProduct.name }}</span
+          ><br />
+          <label for="description">Description:</label
+          ><span>{{ currentProduct.description }}</span
+          ><br />
+          <label for="category">Category:</label
+          ><span>{{ currentProduct.category }}</span
+          ><br />
+          <label for="startingPrice">Starting Price (USD):</label
+          ><span>{{ currentProduct.startingPrice }}</span
+          ><br />
+          <label for="bidEndDate">Bid End-Date:</label
+          ><span>{{ currentProduct.bidEndDate }}</span
+          ><br />
+          <label for="detailDescription">Detail:</label
+          ><span>{{ currentProduct.detailDescription }}</span>
+        </div>
+      </div>
+      <hr />
+      <div class="bids">
+        <h4>Bids</h4>
+        <table *ngIf="productBidsDetailList" class="bids-table">
+          <tr>
+            <th>Bid Amount</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+          <tr *ngFor="let bid of productBidsDetailList" class="bidder-detail">
+            <td>{{ bid.bidAmount }}</td>
+            <td>{{ bid.bidder.firstName }} {{ bid.bidder.lastName }}</td>
+            <td>{{ bid.bidder.email }}</td>
+            <td>{{ bid.bidder.phone }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

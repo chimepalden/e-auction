@@ -1,0 +1,25 @@
+main {
+  background-color: lightgray;
+  min-height: 400px;
+}
+.welcome {
+  width: 100%; 
+  text-align: center;
+  padding: 20px;
+}
+.option {
+  display: flex;
+  justify-content: center;
+}
+.option button {
+  width: 100px;
+  margin: 0 10px;
+}
+.guest {
+  margin-top: 40px;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #1976d2;
+}

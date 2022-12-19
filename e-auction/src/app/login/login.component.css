@@ -1,0 +1,28 @@
+.login {
+  width: 100%;
+  min-height: 400px;
+  background-color: lightgray;
+}
+
+.card {
+  width: 200px;
+  position: relative;
+  top: 40px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.card-header {
+  font-weight: 200;
+  padding-bottom: 10px;
+}
+
+.credentials input {
+  margin-bottom: 10px;
+}
+
+.action {
+  margin-top: 10px;
+}

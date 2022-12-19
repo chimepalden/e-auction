@@ -1,0 +1,13 @@
+<div class="navibar">
+  <div class="logo"><a routerLink="">E-Auction</a></div>
+  <div class="links">
+    <ul>
+      <li *ngIf="!isUserAuthenticated">
+        <a routerLink="/login"><button>Login</button></a>
+      </li>
+      <li *ngIf="isUserAuthenticated">
+        <button (click)="handleLogout()">Logout</button>
+      </li>
+    </ul>
+  </div>
+</div>

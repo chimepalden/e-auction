@@ -1,0 +1,23 @@
+.navibar {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  background-color: #1976d2;
+  color: white;
+}
+
+.logo {
+  margin-left: 10px;
+}
+.logo a {
+  color: white;
+  text-decoration: none;
+}
+.links {
+  margin-right: 5px;
+}
+li {
+  list-style-type: none;
+}

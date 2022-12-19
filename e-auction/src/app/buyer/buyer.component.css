@@ -1,0 +1,41 @@
+.seller-page {
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+}
+
+.left-navi {
+  width: 20%;
+  height: auto;
+  background-color: darkgrey;
+}
+.left-navi h4 {
+  padding-left: 20px;
+}
+.left-navi ul {
+  padding-left: 20px;
+}
+.left-navi li {
+  list-style-type: none;
+  text-align: left;
+  margin-bottom: 5px;
+}
+.left-navi li button {
+  border: none;
+  background-color: darkgrey;
+} 
+.left-navi li button:focus {
+  color: lightblue;
+}
+
+.main {
+  width: 100%;
+  height: auto;
+  background-color: lightgrey;
+  padding-left: 20px;
+}
+
+.product-details label {
+  margin-right: 10px;
+}
+

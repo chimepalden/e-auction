@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  async create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto): Promise<CreateUserDto> {
     return this.userModel.create({
       userId: uuidv4(),
       firstName: createUserDto.firstName,
@@ -22,7 +22,7 @@ export class UsersService {
     });
   }
 
-  async findAll() {
+  async findAll(): Promise<CreateUserDto[]> {
     return this.userModel.find();
   }
 

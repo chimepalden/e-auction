@@ -3,8 +3,8 @@ import { CreateUserDto } from 'src/users/dto/create-user.dto';
 export const userStub = (): CreateUserDto => {
   return {
     userId: '12345',
-    firstName: 'Palden',
-    lastName: 'Dolma',
+    firstName: 'Chime',
+    lastName: 'Palden',
     address: {
       line1: '45 oakmount rd',
       line2: 'Apt 1200',

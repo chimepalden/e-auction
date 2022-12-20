@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { IsNotEmpty, ValidateNested } from 'class-validator';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { CreateUserDto } from './create-user.dto';
 
 export class CreateBidDto {
   bidId: string;

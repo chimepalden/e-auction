@@ -7,9 +7,8 @@ import {
   IsString,
   Length,
   Validate,
-  ValidateNested,
 } from 'class-validator';
-import { BidEndDateValidation } from 'src/validation/BidEndDateValidaton';
+import { BidEndDateValidation } from '../validation/BidEndDateValidation';
 import { Category } from '../category';
 
 export class CreateProductDto {

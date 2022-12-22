@@ -51,11 +51,11 @@ describe('UsersRepository', () => {
         };
 
         jest.spyOn(userModel, 'create');
-        user = await repository.create(userFilterQuery);
+        user = await repository.create(createUser);
       });
 
       test('then it should call the userModel', () => {
-        expect(userModel.create).toBeCalledWith(userFilterQuery);
+        expect(userModel.create).toBeCalledWith(createUser);
       });
       test('then it should return the user created', () => {
         expect(user).toEqual(userStub());

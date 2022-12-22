@@ -1,6 +1,6 @@
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { User } from 'src/users/schema/user.schema';
 
-export const userStub = (): CreateUserDto => {
+export const userStub = (): User => {
   return {
     userId: '12345',
     firstName: 'Chime',
@@ -15,5 +15,7 @@ export const userStub = (): CreateUserDto => {
     phone: 1234567890,
     email: 'palden@abc.com',
     password: '123',
+    products: [],
+    badeProducts: [],
   };
 };

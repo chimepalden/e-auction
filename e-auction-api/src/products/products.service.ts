@@ -1,19 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
-import { Product, ProductDocument } from 'src/schemas/product.schema';
+import { Product } from 'src/schemas/product.schema';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { ProductsRepository } from './products.repository';
 
 @Injectable()
 export class ProductsService {
-  constructor(
-    @InjectModel(Product.name) private productModel: Model<ProductDocument>,
-  ) {}
+  constructor(private readonly productsRepository: ProductsRepository) {}
 
-  async create(createProductDto: CreateProductDto) {
-    return this.productModel.create({
+  async create(createProductDto: CreateProductDto): Promise<Product> {
+    return this.productsRepository.create({
       productId: uuidv4(),
       name: createProductDto.name,
       description: createProductDto.description,
@@ -25,22 +22,25 @@ export class ProductsService {
     });
   }
 
-  async findAll() {
-    return this.productModel.find();
+  async findAll(): Promise<Product[]> {
+    return this.productsRepository.find({});
   }
 
-  async findOne(productId: string): Promise<CreateProductDto> {
-    return await this.productModel.findOne({ productId });
+  async findOne(productId: string): Promise<Product> {
+    return await this.productsRepository.findOne({ productId });
   }
 
-  async update(id: string, updateProductDto: UpdateProductDto) {
-    return this.productModel.findOneAndUpdate(
+  async update(
+    id: string,
+    updateProductDto: UpdateProductDto,
+  ): Promise<Product> {
+    return this.productsRepository.findOneAndUpdate(
       { productId: id },
       updateProductDto,
     );
   }
 
-  async remove(id: string) {
-    return this.productModel.findOneAndDelete({ productId: id });
+  async remove(id: string): Promise<Product> {
+    return this.productsRepository.findOneAndDelete({ productId: id });
   }
 }

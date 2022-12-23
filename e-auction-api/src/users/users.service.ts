@@ -1,17 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { User, UserDocument } from 'src/schemas/user.schema';
+import { User } from 'src/schemas/user.schema';
 import { v4 as uuidv4 } from 'uuid';
+import { UsersRepository } from './users.repository';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  constructor(private readonly usersRepository: UsersRepository) {}
 
-  async create(createUserDto: CreateUserDto): Promise<CreateUserDto> {
-    return this.userModel.create({
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    return this.usersRepository.create({
       userId: uuidv4(),
       firstName: createUserDto.firstName,
       lastName: createUserDto.lastName,
@@ -22,26 +21,23 @@ export class UsersService {
     });
   }
 
-  async findAll(): Promise<CreateUserDto[]> {
-    return this.userModel.find();
+  async findAll(): Promise<User[]> {
+    return this.usersRepository.find({});
   }
 
-  async findOne(userId: string): Promise<CreateUserDto> {
-    return this.userModel.findOne({ userId });
+  async findOne(userId: string): Promise<User> {
+    return this.usersRepository.findOne({ userId });
   }
 
-  async findByEmail(email: string): Promise<CreateUserDto> {
-    return this.userModel.findOne({ email });
+  async findByEmail(email: string): Promise<User> {
+    return this.usersRepository.findOne({ email });
   }
 
-  async update(
-    userId: string,
-    updateUserDto: UpdateUserDto,
-  ): Promise<CreateUserDto> {
-    return this.userModel.findOneAndUpdate({ userId }, updateUserDto);
+  async update(userId: string, updateUserDto: UpdateUserDto): Promise<User> {
+    return this.usersRepository.findOneAndUpdate({ userId }, updateUserDto);
   }
 
-  async remove(userId: string): Promise<CreateUserDto> {
-    return this.userModel.findOneAndDelete({ userId });
+  async remove(userId: string): Promise<User> {
+    return this.usersRepository.findOneAndDelete({ userId });
   }
 }

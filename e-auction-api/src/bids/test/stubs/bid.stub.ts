@@ -1,6 +1,6 @@
-import { CreateBidDto } from 'src/bids/dto/create-bid.dto';
+import { Bid } from 'src/bids/schema/bid.schema';
 
-export const bidStub = (): CreateBidDto => {
+export const bidStub = (): Bid => {
   return {
     bidId: '0123456789',
     bidAmount: 2000,

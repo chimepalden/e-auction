@@ -1,6 +1,6 @@
-import { CreateProductDto } from 'src/products/dto/create-product.dto';
+import { Product } from 'src/products/schema/product.schema';
 
-export const productStub = (): CreateProductDto => {
+export const productStub = (): Product => {
   return {
     productId: '123456',
     name: 'Product 1',

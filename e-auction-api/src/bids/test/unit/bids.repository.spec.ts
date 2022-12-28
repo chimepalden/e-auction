@@ -1,12 +1,12 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
 import { FilterQuery } from 'mongoose';
-import { CreateBidDto } from '../dto/create-bid.dto';
-import { UpdateBidDto } from '../dto/update-bid.dto';
-import { Bid } from '../schema/bid.schema';
-import { BidsRepository } from '../bids.repository';
-import { bidStub } from './stubs/bid.stub';
-import { BidModel } from './support/bid.model';
+import { CreateBidDto } from '../../dto/create-bid.dto';
+import { UpdateBidDto } from '../../dto/update-bid.dto';
+import { Bid } from '../../schema/bid.schema';
+import { BidsRepository } from '../../bids.repository';
+import { bidStub } from '../stubs/bid.stub';
+import { BidModel } from '../support/bid.model';
 
 describe('ProductsRepository', () => {
   let repository: BidsRepository;

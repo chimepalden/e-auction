@@ -1,12 +1,12 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
 import { FilterQuery } from 'mongoose';
-import { CreateProductDto } from '../dto/create-product.dto';
-import { UpdateProductDto } from '../dto/update-product.dto';
-import { Product } from '../schema/product.schema';
-import { ProductsRepository } from '../products.repository';
-import { productStub } from './stubs/product.stub';
-import { ProductModel } from './support/product.model';
+import { CreateProductDto } from '../../dto/create-product.dto';
+import { UpdateProductDto } from '../../dto/update-product.dto';
+import { Product } from '../../schema/product.schema';
+import { ProductsRepository } from '../../products.repository';
+import { productStub } from '../stubs/product.stub';
+import { ProductModel } from '../support/product.model';
 
 describe('ProductsRepository', () => {
   let repository: ProductsRepository;

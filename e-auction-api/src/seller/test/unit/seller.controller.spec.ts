@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UsersService } from 'src/users/users.service';
-import { SellerController } from './seller.controller';
-import { Types } from 'mongoose';
+import { UsersService } from '../../../users/users.service';
+import { SellerController } from '../../seller.controller';
 
 describe('SellerController', () => {
   let sellersController: SellerController;

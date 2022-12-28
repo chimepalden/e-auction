@@ -10,15 +10,15 @@ import {
   Headers,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ProductsService } from 'src/products/products.service';
-import { CreateProductDto } from 'src/products/dto/create-product.dto';
-import { UsersService } from 'src/users/users.service';
-import { BidsService } from 'src/bids/bids.service';
-import { BidEndDatePassedException } from 'src/exceptions/BidEndDatePassedException';
-import { BidEndDatePassedExceptionFilter } from 'src/exceptions/BidEndDatePassedExceptionFilter';
-import { ProductHasBuyerException } from 'src/exceptions/ProductHasBuyerException';
-import { ProductHasBuyerExceptionFilter } from 'src/exceptions/ProductHasBuyerExceptionFilter';
-import { UpdateBidDto } from 'src/bids/dto/update-bid.dto';
+import { ProductsService } from '../products/products.service';
+import { CreateProductDto } from '../products/dto/create-product.dto';
+import { UsersService } from '../users/users.service';
+import { BidsService } from '../bids/bids.service';
+import { BidEndDatePassedException } from '../exceptions/BidEndDatePassedException';
+import { BidEndDatePassedExceptionFilter } from '../exceptions/BidEndDatePassedExceptionFilter';
+import { ProductHasBuyerException } from '../exceptions/ProductHasBuyerException';
+import { ProductHasBuyerExceptionFilter } from '../exceptions/ProductHasBuyerExceptionFilter';
+import { UpdateBidDto } from '../bids/dto/update-bid.dto';
 
 @Controller('seller')
 export class SellerController {

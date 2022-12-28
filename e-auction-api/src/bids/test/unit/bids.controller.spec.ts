@@ -1,11 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BidsController } from '../bids.controller';
-import { BidsService } from '../bids.service';
-import { CreateBidDto } from '../dto/create-bid.dto';
-import { UpdateBidDto } from '../dto/update-bid.dto';
-import { bidStub } from './stubs/bid.stub';
+import { BidsController } from '../../bids.controller';
+import { BidsService } from '../../bids.service';
+import { CreateBidDto } from '../../dto/create-bid.dto';
+import { UpdateBidDto } from '../../dto/update-bid.dto';
+import { bidStub } from '../stubs/bid.stub';
 
-jest.mock('../bids.service');
+jest.mock('../../bids.service');
 
 describe('BidsController', () => {
   let bidController: BidsController;

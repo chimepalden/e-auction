@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Bid } from 'src/schemas/bid.schema';
+import { Bid } from './schema/bid.schema';
 import { CreateBidDto } from './dto/create-bid.dto';
 import { UpdateBidDto } from './dto/update-bid.dto';
 import { v4 as uuidv4 } from 'uuid';

@@ -8,7 +8,7 @@ import {
   Length,
   Validate,
 } from 'class-validator';
-import { BidEndDateValidation } from '../validation/BidEndDateValidation';
+import { BidEndDateValidation } from '../../validation/BidEndDateValidaton';
 import { Category } from '../category';
 
 export class CreateProductDto {

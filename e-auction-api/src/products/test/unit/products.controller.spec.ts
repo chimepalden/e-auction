@@ -1,11 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CreateProductDto } from '../dto/create-product.dto';
-import { UpdateProductDto } from '../dto/update-product.dto';
-import { ProductsController } from '../products.controller';
-import { ProductsService } from '../products.service';
-import { productStub } from './stubs/product.stub';
+import { CreateProductDto } from '../../dto/create-product.dto';
+import { UpdateProductDto } from '../../dto/update-product.dto';
+import { ProductsController } from '../../products.controller';
+import { ProductsService } from '../../products.service';
+import { productStub } from '../stubs/product.stub';
 
-jest.mock('../products.service');
+jest.mock('../../products.service');
 
 describe('ProductsController', () => {
   let productController: ProductsController;

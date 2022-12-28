@@ -1,12 +1,12 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
 import { FilterQuery } from 'mongoose';
-import { CreateUserDto } from '../dto/create-user.dto';
-import { UpdateUserDto } from '../dto/update-user.dto';
-import { User } from '../schema/user.schema';
-import { UsersRepository } from '../users.repository';
-import { userStub } from './stubs/user.stub';
-import { UserModel } from './support/user.model';
+import { CreateUserDto } from '../../dto/create-user.dto';
+import { UpdateUserDto } from '../../dto/update-user.dto';
+import { User } from '../../schema/user.schema';
+import { UsersRepository } from '../../users.repository';
+import { userStub } from '../stubs/user.stub';
+import { UserModel } from '../support/user.model';
 
 describe('UsersRepository', () => {
   let repository: UsersRepository;

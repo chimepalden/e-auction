@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { userStub } from '../test/stubs/user.stub';
-import { AuthController } from '../auth.controller';
-import { AuthService } from '../auth.service';
-import { LoginDto } from '../dto/login.dto';
-import { LocalStrategy } from '../local.strategy';
-import { User } from '../../users/schema/user.schema';
+import { userStub } from '../stubs/user.stub';
+import { AuthController } from '../../auth.controller';
+import { AuthService } from '../../auth.service';
+import { LoginDto } from '../../dto/login.dto';
+import { LocalStrategy } from '../../local.strategy';
+import { User } from '../../../users/schema/user.schema';
 
-jest.mock('../auth.service');
+jest.mock('../../auth.service');
 
 describe('AuthController', () => {
   let controller: AuthController;

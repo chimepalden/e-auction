@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateBidDto } from '../bids/dto/create-bid.dto';
-import { Bid, BidDocument } from 'src/schemas/bid.schema';
+import { Bid, BidDocument } from '../bids/schema/bid.schema';
 import { Model } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
 import { UpdateBidDto } from '../bids/dto/update-bid.dto';

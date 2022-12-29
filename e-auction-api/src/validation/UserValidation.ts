@@ -4,7 +4,7 @@ import {
   ValidatorConstraintInterface,
 } from 'class-validator';
 import { Model } from 'mongoose';
-import { User, UserDocument } from 'src/schemas/user.schema';
+import { User, UserDocument } from '../users/schema/user.schema';
 
 @ValidatorConstraint({ async: true })
 export class UserValidation implements ValidatorConstraintInterface {

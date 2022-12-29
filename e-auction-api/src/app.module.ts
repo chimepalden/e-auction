@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
@@ -8,10 +7,15 @@ import { SellerModule } from './seller/seller.module';
 import { BuyerModule } from './buyer/buyer.module';
 import { AuthModule } from './auth/auth.module';
 import { BidsModule } from './bids/bids.module';
+import { DatabaseModule } from './database/database.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/nest'),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    DatabaseModule,
     ProductsModule,
     UsersModule,
     SellerModule,

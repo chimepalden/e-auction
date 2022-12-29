@@ -19,12 +19,10 @@ import { BidEndDatePassedExceptionFilter } from '../exceptions/BidEndDatePassedE
 import { IdException } from '../exceptions/IdException';
 import { IdExceptionFilter } from '../exceptions/IdExceptionFilter';
 import { UpdateProductDto } from '../products/dto/update-product.dto';
-import { ProductsService } from '../products/products.service';
-import { UpdateUserDto } from '../users/dto/update-user.dto';
-import { UsersService } from '../users/users.service';
-import { BuyerService } from './buyer.service';
 import { CreateBidDto } from '../bids/dto/create-bid.dto';
 import { UpdateBidDto } from '../bids/dto/update-bid.dto';
+import { ProductsService } from '../products/products.service';
+import { UsersService } from '../users/users.service';
 
 @Controller('buyer')
 export class BuyerController {

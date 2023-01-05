@@ -19,6 +19,7 @@ export class ProductsService {
       startingPrice: createProductDto.startingPrice,
       bidEndDate: createProductDto.bidEndDate,
       sellerId: createProductDto.sellerId,
+      bids: [],
     });
   }
 

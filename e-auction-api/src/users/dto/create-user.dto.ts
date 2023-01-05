@@ -4,6 +4,7 @@ import {
   IsNotEmpty,
   IsNotEmptyObject,
   IsNumberString,
+  IsOptional,
   IsString,
   Length,
   ValidateNested,
@@ -41,7 +42,9 @@ export class CreateUserDto {
   @IsString()
   password: string;
 
+  @IsOptional()
   products?: string[];
 
+  @IsOptional()
   badeProducts?: string[];
 }

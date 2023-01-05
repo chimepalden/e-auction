@@ -18,6 +18,8 @@ export class UsersService {
       phone: createUserDto.phone,
       email: createUserDto.email,
       password: createUserDto.password,
+      products: [],
+      badeProducts: [],
     });
   }
 

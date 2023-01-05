@@ -23,6 +23,7 @@ import { CreateBidDto } from '../bids/dto/create-bid.dto';
 import { UpdateBidDto } from '../bids/dto/update-bid.dto';
 import { ProductsService } from '../products/products.service';
 import { UsersService } from '../users/users.service';
+import { Bid } from '../bids/schema/bid.schema';
 
 @Controller('buyer')
 export class BuyerController {
@@ -39,8 +40,10 @@ export class BuyerController {
     BidEndDatePassedExceptionFilter,
     BadedExceptionFilter,
   )
-  async createBid(@Body() createBidDto: CreateBidDto) {
+  async createBid(@Body() createBidDto: CreateBidDto): Promise<Bid> {
     let product: UpdateProductDto;
+    let bid: Bid;
+
     try {
       product = await this.productsService.findOne(createBidDto.productId);
     } catch (error) {
@@ -57,17 +60,19 @@ export class BuyerController {
     }
 
     try {
-      return this.bidsService.create(createBidDto).then((res) => {
+      bid = await this.bidsService.create(createBidDto).then((res) => {
         product.bids.push(res.bidId);
         createBidDto.bidder.badeProducts.push(res.productId);
         this.productsService.update(createBidDto.productId, product);
         this.usersService.update(createBidDto.bidder.userId, {
           badeProducts: createBidDto.bidder.badeProducts,
         });
+        return res;
       });
     } catch (error) {
       console.log(error);
     }
+    return bid;
   }
 
   @Patch('update-bid/:productId/:bidId/:newBidAmount')

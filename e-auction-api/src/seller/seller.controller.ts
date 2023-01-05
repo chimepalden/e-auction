@@ -18,7 +18,9 @@ import { BidEndDatePassedException } from '../exceptions/BidEndDatePassedExcepti
 import { BidEndDatePassedExceptionFilter } from '../exceptions/BidEndDatePassedExceptionFilter';
 import { ProductHasBuyerException } from '../exceptions/ProductHasBuyerException';
 import { ProductHasBuyerExceptionFilter } from '../exceptions/ProductHasBuyerExceptionFilter';
-import { UpdateBidDto } from '../bids/dto/update-bid.dto';
+import { Bid } from '../bids/schema/bid.schema';
+import { User } from '../users/schema/user.schema';
+import { Product } from '../products/schema/product.schema';
 
 @Controller('seller')
 export class SellerController {
@@ -30,7 +32,9 @@ export class SellerController {
 
   // @UseGuards(AuthGuard('jwt'))
   @Post()
-  async createProduct(@Body() createProductDto: CreateProductDto) {
+  async createProduct(
+    @Body() createProductDto: CreateProductDto,
+  ): Promise<User> {
     const product = await this.productsService.create(createProductDto);
     const user = await this.usersService.findOne(createProductDto.sellerId);
     user.products.push(product.productId);
@@ -39,7 +43,7 @@ export class SellerController {
 
   // @UseGuards(AuthGuard('jwt'))
   @Get(':id')
-  async getSellerProducts(@Param('id') sellerId: string) {
+  async getSellerProducts(@Param('id') sellerId: string): Promise<Product[]> {
     const allProducts = await this.productsService.findAll();
     const sellerProducts = allProducts.filter(
       (product) => sellerId === product.sellerId,
@@ -48,27 +52,28 @@ export class SellerController {
   }
 
   @Get()
-  async getBiddersDetailList(@Headers('myHeader') headers: string) {
-    const productBiddersDetailList: UpdateBidDto[] = [];
+  async getBiddersDetailList(
+    @Headers('myHeader') headers: string,
+  ): Promise<Bid[]> {
+    const productBiddersDetailList: Bid[] = [];
 
-    if (headers) {
-      const list = headers.split(',');
-      const allBids = await this.bidsService.findAll();
-      list.forEach((bidId) => {
-        for (let bid of allBids) {
-          if (bidId == bid.bidId) {
-            productBiddersDetailList.push(bid);
-            break;
-          }
+    // if (headers) {
+    const list = headers.split(',');
+    const allBids = await this.bidsService.findAll();
+    list.forEach((bidId) => {
+      for (let bid of allBids) {
+        if (bidId == bid.bidId) {
+          productBiddersDetailList.push(bid);
+          break;
         }
-      });
-    }
+      }
+    });
     return productBiddersDetailList;
   }
 
   @Delete(':id')
   @UseFilters(BidEndDatePassedExceptionFilter, ProductHasBuyerExceptionFilter)
-  async removeSellerProduct(@Param('id') productId: string) {
+  async removeSellerProduct(@Param('id') productId: string): Promise<Product> {
     const product = await this.productsService.findOne(productId);
     const now = new Date();
     if (product.bidEndDate <= now) {
